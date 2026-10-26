@@ -53,25 +53,28 @@ function App() {
 
     const completedCount = card.filter((item) => item.isDone).length;
 
-    const cardList = card.map((item, index) => {
-        return (
-            <div key={index}
-                 style={{
-                     display: 'flex',
-                     flexDirection: 'column',
-                     justifyContent: 'center',
-                     alignItems: 'center',
-                     listStyle: 'none',
-                     boxSizing: 'border-box',
-                     width: "calc(25% - 10px)",
-                     padding: "20px",
-                     gap: "6px",
-                     border: "1px solid black",
-                     borderRadius: "10px",
-                     margin: '5px',
-                     opacity: item.isDone ? 0.3 : 1,
-                     transition: "opacity 0.2s ease, border-color 0.2s ease"
-                 }}>
+    const cardList = card.length === 0 ? (
+        <p style={{color: "#888", padding: "20px"}}>등록된 영화가 없습니다.</p>
+    ) : (
+        card.map((item, index) => {
+            return (
+                <div key={index}
+                     style={{
+                         display: 'flex',
+                         flexDirection: 'column',
+                         justifyContent: 'center',
+                         alignItems: 'center',
+                         listStyle: 'none',
+                         boxSizing: 'border-box',
+                         width: "calc(25% - 10px)",
+                         padding: "20px",
+                         gap: "6px",
+                         border: "1px solid black",
+                         borderRadius: "10px",
+                         margin: '5px',
+                         opacity: item.isDone ? 0.3 : 1,
+                         transition: "opacity 0.2s ease, border-color 0.2s ease"
+                     }}>
                             <span
                                 style={{
                                     fontWeight: "bold",
@@ -80,25 +83,25 @@ function App() {
                                 }}>
                                 {item.name}
                             </span>
-                <span>{item.genre}</span>
-                <span>{"⭐".repeat(item.rating)}</span>
-                <label>
-                    <input
-                        type="checkbox"
-                        checked={item.isDone}
-                        onChange={() => handleToggleDone(index)}
-                    />
-                    {item.isDone ? "감상 완료" : "미완료"}
-                </label>
-                <button
-                    onClick={() => {
-                        handleDelete(index);
-                    }}
-                >삭제
-                </button>
-            </div>
-        )
-    })
+                    <span>{item.genre}</span>
+                    <span>{"⭐".repeat(item.rating)}</span>
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked={item.isDone}
+                            onChange={() => handleToggleDone(index)}
+                        />
+                        {item.isDone ? "감상 완료" : "미완료"}
+                    </label>
+                    <button
+                        onClick={() => {
+                            handleDelete(index);
+                        }}
+                    >삭제
+                    </button>
+                </div>
+            )
+        }))
 
     return (
         <>
@@ -135,16 +138,11 @@ function App() {
                         <option value={"4"}>⭐ 4점</option>
                         <option value={"5"}>⭐ 5점</option>
                     </select>
-                    <button>
-                        추가
-                    </button>
+                    <button>추가</button>
                 </form>
             </fieldset>
             <h2>전체 {card.length}편 / 감상 완료 {completedCount}편</h2>
-            <div style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-            }}>
+            <div style={{display: 'flex', flexWrap: 'wrap',}}>
                 {cardList}
             </div>
         </>

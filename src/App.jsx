@@ -14,7 +14,7 @@ function App() {
         setGenre(event.target.value);
     }
 
-    const handleRatingType = (event) => {
+    const handleRating = (event) => {
         setRating(event.target.value);
     }
 
@@ -53,6 +53,53 @@ function App() {
 
     const completedCount = card.filter((item) => item.isDone).length;
 
+    const cardList = card.map((item, index) => {
+        return (
+            <div key={index}
+                 style={{
+                     display: 'flex',
+                     flexDirection: 'column',
+                     justifyContent: 'center',
+                     alignItems: 'center',
+                     listStyle: 'none',
+                     boxSizing: 'border-box',
+                     width: "calc(25% - 10px)",
+                     padding: "20px",
+                     gap: "6px",
+                     border: "1px solid black",
+                     borderRadius: "10px",
+                     margin: '5px',
+                     opacity: item.isDone ? 0.3 : 1,
+                     transition: "opacity 0.2s ease, border-color 0.2s ease"
+                 }}>
+                            <span
+                                style={{
+                                    fontWeight: "bold",
+                                    textDecoration: item.isDone ? "line-through" : "none",
+                                    color: item.isDone ? "#777" : "inherit",
+                                }}>
+                                {item.name}
+                            </span>
+                <span>{item.genre}</span>
+                <span>{"⭐".repeat(item.rating)}</span>
+                <label>
+                    <input
+                        type="checkbox"
+                        checked={item.isDone}
+                        onChange={() => handleToggleDone(index)}
+                    />
+                    {item.isDone ? "감상 완료" : "미완료"}
+                </label>
+                <button
+                    onClick={() => {
+                        handleDelete(index);
+                    }}
+                >삭제
+                </button>
+            </div>
+        )
+    })
+
     return (
         <>
             <h1>나의 영화 기록장</h1>
@@ -79,7 +126,7 @@ function App() {
                         <option value={"범죄"}>범죄</option>
                     </ select>
                     <select
-                        onChange={handleRatingType}
+                        onChange={handleRating}
                         value={rating}
                     >
                         <option value={"1"}>⭐ 1점</option>
@@ -98,52 +145,7 @@ function App() {
                 display: 'flex',
                 flexWrap: 'wrap',
             }}>
-                {card.map((item, index) => {
-                    return (
-                        <div key={index}
-                             style={{
-                                 display: 'flex',
-                                 flexDirection: 'column',
-                                 justifyContent: 'center',
-                                 alignItems: 'center',
-                                 listStyle: 'none',
-                                 boxSizing: 'border-box',
-                                 width: "calc(25% - 10px)",
-                                 padding: "20px",
-                                 gap: "6px",
-                                 border: "1px solid black",
-                                 borderRadius: "10px",
-                                 margin: '5px',
-                                 opacity: item.isDone ? 0.3 : 1,
-                                 transition: "opacity 0.2s ease, border-color 0.2s ease"
-                             }}>
-                            <span
-                                style={{
-                                    fontWeight: "bold",
-                                    textDecoration: item.isDone ? "line-through" : "none",
-                                    color: item.isDone ? "#777" : "inherit",
-                                }}>
-                                {item.name}
-                            </span>
-                            <span>{item.genre}</span>
-                            <span>{"⭐".repeat(item.rating)}</span>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    checked={item.isDone}
-                                    onChange={() => handleToggleDone(index)}
-                                />
-                                {item.isDone ? "감상 완료" : "미완료"}
-                            </label>
-                            <button
-                                onClick={() => {
-                                    handleDelete(index);
-                                }}
-                            >삭제
-                            </button>
-                        </div>
-                    )
-                })}
+                {cardList}
             </div>
         </>
     )

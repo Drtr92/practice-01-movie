@@ -54,7 +54,7 @@ function App() {
     const completedCount = card.filter((item) => item.isDone).length;
 
     const cardList = card.length === 0 ? (
-        <p style={{color: "#888", padding: "20px"}}>등록된 영화가 없습니다.</p>
+        <p style={{color: "#888", padding: "20px"}}>자네, 뭐라도 좀 감상하지 않겠나🤦‍♀️</p>
     ) : (
         card.map((item, index) => {
             return (
@@ -75,14 +75,14 @@ function App() {
                          opacity: item.isDone ? 0.3 : 1,
                          transition: "opacity 0.2s ease, border-color 0.2s ease"
                      }}>
-                            <span
-                                style={{
-                                    fontWeight: "bold",
-                                    textDecoration: item.isDone ? "line-through" : "none",
-                                    color: item.isDone ? "#777" : "inherit",
-                                }}>
-                                {item.name}
-                            </span>
+                    <span
+                        style={{
+                            fontWeight: "bold",
+                            textDecoration: item.isDone ? "line-through" : "none",
+                            color: item.isDone ? "#777" : "inherit",
+                        }}>
+                        {item.name}
+                    </span>
                     <span>{item.genre}</span>
                     <span>{"⭐".repeat(item.rating)}</span>
                     <label>

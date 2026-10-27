@@ -40,6 +40,10 @@ function App() {
         setRating(ratings[0]);
     }
 
+    const ratingHandle = ratings.map((item, index) => {
+        return <option key={index} value={item}>❤️ {item}점</option>;
+    })
+
     const handleToggleDone = (targetIndex) => {
         const updatedCard = card.map((item, index) => {
             if (index === targetIndex) {
@@ -88,7 +92,7 @@ function App() {
                         {item.name}
                     </span>
                     <span>{item.genre}</span>
-                    <span>{"⭐".repeat(item.rating)}</span>
+                    <span>{"❤️".repeat(Number(item.rating)) + "🤍".repeat(5 - Number(item.rating))}</span>
                     <label>
                         <input
                             type="checkbox"
@@ -131,9 +135,7 @@ function App() {
                         onChange={handleRating}
                         value={rating}
                     >
-                        {ratings.map((item, index) => {
-                            return <option key={index} value={item}>⭐ {item}점</option>;
-                        })}
+                        {ratingHandle}
                     </select>
                     <button type={"submit"}>추가</button>
                 </form>

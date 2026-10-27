@@ -81,7 +81,7 @@ function App() {
                          borderRadius: "10px",
                          margin: '5px',
                          opacity: item.isDone ? 0.3 : 1,
-                         transition: "opacity 0.2s ease, border-color 0.2s ease"
+                         transition: "opacity 0.4s ease, border-color 0.4s ease"
                      }}>
                     <span
                         style={{

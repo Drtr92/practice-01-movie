@@ -6,11 +6,15 @@ function App() {
     const [rating, setRating] = useState("1");
     const [card, setCard] = useState([]);
 
-    const handleChangeType = (event) => {
+    const genres = ["코미디","어드벤처","로맨스","공포","스릴러","드라마","판타지","범죄"];
+
+    const ratings = ["1","2","3","4","5"];
+
+    const handleChangeName = (event) => {
         setName(event.target.value);
     }
 
-    const handleSelectType = (event) => {
+    const handleSelectGenre = (event) => {
         setGenre(event.target.value);
     }
 
@@ -111,32 +115,25 @@ function App() {
                 <form
                     onSubmit={handleSubmit}>
                     <input
-                        onChange={handleChangeType}
+                        onChange={handleChangeName}
                         placeholder={"영화 제목"}
                         value={name}
                     />
                     <select
-                        onChange={handleSelectType}
+                        onChange={handleSelectGenre}
                         value={genre}
                     >
-                        <option value={"코미디"}>코미디</option>
-                        <option value={"어드벤처"}>어드벤처</option>
-                        <option value={"로맨스"}>로맨스</option>
-                        <option value={"공포"}>공포</option>
-                        <option value={"스릴러"}>스릴러</option>
-                        <option value={"드라마"}>드라마</option>
-                        <option value={"판타지"}>판타지</option>
-                        <option value={"범죄"}>범죄</option>
+                        {genres.map((item, index) => {
+                            return <option key={index} value={item}>{item}</option>
+                        })}
                     </ select>
                     <select
                         onChange={handleRating}
                         value={rating}
                     >
-                        <option value={"1"}>⭐ 1점</option>
-                        <option value={"2"}>⭐ 2점</option>
-                        <option value={"3"}>⭐ 3점</option>
-                        <option value={"4"}>⭐ 4점</option>
-                        <option value={"5"}>⭐ 5점</option>
+                        {ratings.map((item, index) => {
+                            return <option key={index} value={item}>⭐ {item}점</option>;
+                        })}
                     </select>
                     <button>추가</button>
                 </form>

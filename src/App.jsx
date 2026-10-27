@@ -1,14 +1,14 @@
 import {useState} from "react";
 
 function App() {
+
+    const genres = ["코미디", "어드벤처", "로맨스", "공포", "스릴러", "드라마", "판타지", "범죄"];
+    const ratings = ["1", "2", "3", "4", "5"];
+
     const [name, setName] = useState("");
-    const [genre, setGenre] = useState("코미디");
-    const [rating, setRating] = useState("1");
+    const [genre, setGenre] = useState(genres[0]);
+    const [rating, setRating] = useState(ratings[0]);
     const [card, setCard] = useState([]);
-
-    const genres = ["코미디","어드벤처","로맨스","공포","스릴러","드라마","판타지","범죄"];
-
-    const ratings = ["1","2","3","4","5"];
 
     const handleChangeName = (event) => {
         setName(event.target.value);
@@ -33,11 +33,11 @@ function App() {
             genre: genre,
             rating: rating,
             isDone: false
-        };
+        }
         setCard([...card, newCard]);
         setName("");
-        setGenre("코미디");
-        setRating("1");
+        setGenre(genres[0]);
+        setRating(ratings[0]);
     }
 
     const handleToggleDone = (targetIndex) => {
@@ -135,7 +135,7 @@ function App() {
                             return <option key={index} value={item}>⭐ {item}점</option>;
                         })}
                     </select>
-                    <button>추가</button>
+                    <button type={"submit"}>추가</button>
                 </form>
             </fieldset>
             <h2>전체 {card.length}편 / 감상 완료 {completedCount}편</h2>

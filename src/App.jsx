@@ -67,7 +67,7 @@ function App() {
 
     const cardList =
         card.length === 0 ? (
-            <div className={styles.empty}> 자네, 뭐라도 좀 감상하지 않겠나... 🤦‍♀️</div>
+            <div className={styles.empty}> 보고싶은 영화가 없으신가봐요... 🤦‍♀️</div>
         ) : (
             card.map((item, index) => {
                 return (
@@ -116,7 +116,7 @@ function App() {
                     <input
                         className={styles.input}
                         onChange={handleChangeName}
-                        placeholder={"영화 제목"}
+                        placeholder={"    영화 제목을 입력해 주세요."}
                         value={name}
                     />
                     <select className={styles.select} onChange={handleSelectGenre} value={genre}>

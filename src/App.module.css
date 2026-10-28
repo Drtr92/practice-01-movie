@@ -24,21 +24,29 @@ fieldset {
 
 .select {
     width: 90px;
-    padding: 6px 12px;
+    padding: 8px 12px;
+    box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 6px;
 }
 
 .input {
     width: 300px;
+    padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 6px;
 }
 
+.input:hover,
+.select:hover {
+    outline: 2px solid #2563eb;
+    border: 1px solid #2563eb;
+}
+
 .input:focus,
 .select:focus {
-    outline: none;
-    border: 3px solid #2563eb;
+    outline: 2px solid #2563eb;
+    border: 1px solid #2563eb;
 }
 
 .button {
@@ -52,16 +60,14 @@ fieldset {
 
 .button:hover {
     background-color: #1d4ed8;
+    cursor: pointer;
 }
 
 .menu {
-    display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: space-between;
     width: 100%;
     max-width: 800px;
-    background: white;
     color: #4b5563;
 }
 

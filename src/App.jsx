@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState} from "react";
 import styles from "./App.module.css";
 
 function App() {
@@ -43,7 +43,7 @@ function App() {
     const ratingHandle = ratings.map((item, index) => {
         return (
             <option key={index} value={item}>
-                ❤️ {item}점
+                ⭐ {item}점
             </option>
         );
     });
@@ -51,7 +51,7 @@ function App() {
     const handleToggleDone = targetIndex => {
         const updatedCard = card.map((item, index) => {
             if (index === targetIndex) {
-                return { ...item, isDone: !item.isDone };
+                return {...item, isDone: !item.isDone};
             }
             return item;
         });
@@ -77,12 +77,12 @@ function App() {
                                     ${styles.card}
                                     ${item.isDone ? styles.isDone : styles.notYet}`}>
                         <h4 className={styles.movieTitle}>{item.name}</h4>
-                        <span>{item.genre}</span>
-                        <span>
-                            {"❤️".repeat(Number(item.rating)) +
-                                "🤍".repeat(5 - Number(item.rating))}
-                        </span>
-                        <label>
+                        <div className={styles.genreInCard}>{item.genre}</div>
+                        <div className={styles.ratingBox}>
+                            <div className={styles.goldStar}>{"★".repeat(Number(item.rating))}</div>
+                            <div className={styles.whiteStar}>{"★".repeat(5 - Number(item.rating))}</div>
+                        </div>
+                        <label className={styles.checkBoxTitle}>
                             <input
                                 type="checkbox"
                                 checked={item.isDone}
@@ -111,12 +111,12 @@ function App() {
                 </h3>
             </header>
             <fieldset className={`${styles.menu} ${styles.card}`}>
-                <h3>영화 추가</h3>
+                <h3 style={{padding: "0 14px 0 0"}}>영화 추가</h3>
                 <form className={styles.form} onSubmit={handleSubmit}>
                     <input
                         className={styles.input}
                         onChange={handleChangeName}
-                        placeholder={"    영화 제목을 입력해 주세요."}
+                        placeholder={"  영화 제목을 입력해 주세요."}
                         value={name}
                     />
                     <select className={styles.select} onChange={handleSelectGenre} value={genre}>

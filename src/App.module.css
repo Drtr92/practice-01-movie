@@ -57,7 +57,7 @@ fieldset {
     color: white;
     font-size: 12px;
     font-weight: bold;
-    background-color: #2563eb;
+    background-color: #8a8a8a;
     border-radius: 6px;
 }
 
@@ -144,6 +144,11 @@ fieldset {
         opacity 0.4s ease,
         border-color 0.4s ease;
     margin: 8px 8px;
+}
+
+.movies:hover {
+    margin: 5px 8px;
+    border: 3px solid #2563eb;
 }
 
 .movieTitle {

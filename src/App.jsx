@@ -67,7 +67,7 @@ function App() {
 
     const cardList =
         card.length === 0 ? (
-            <p className={styles.empty}> 자네, 뭐라도 좀 감상하지 않겠나🤦‍♀️</p>
+            <div className={styles.empty}> 자네, 뭐라도 좀 감상하지 않겠나... 🤦‍♀️</div>
         ) : (
             card.map((item, index) => {
                 return (
@@ -77,7 +77,7 @@ function App() {
                                     ${styles.card}
                                     ${item.isDone ? styles.isDone : styles.notYet}`}>
                         <h4 className={styles.movieTitle}>{item.name}</h4>
-                        <span style={{ flexDirection: "row" }}>{item.genre}</span>
+                        <span>{item.genre}</span>
                         <span>
                             {"❤️".repeat(Number(item.rating)) +
                                 "🤍".repeat(5 - Number(item.rating))}

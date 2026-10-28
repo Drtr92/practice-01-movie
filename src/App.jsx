@@ -67,7 +67,7 @@ function App() {
 
     const cardList =
         card.length === 0 ? (
-            <p style={{ color: "#888", padding: "20px" }}>자네, 뭐라도 좀 감상하지 않겠나🤦‍♀️</p>
+            <p className={styles.empty}> 자네, 뭐라도 좀 감상하지 않겠나🤦‍♀️</p>
         ) : (
             card.map((item, index) => {
                 return (

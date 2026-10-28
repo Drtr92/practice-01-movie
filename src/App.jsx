@@ -1,4 +1,5 @@
 import {useState} from "react";
+import styles from "./App.module.css"
 
 function App() {
 
@@ -112,7 +113,7 @@ function App() {
         }))
 
     return (
-        <>
+        <div className={styles.container}>
             <h1>나의 영화 기록장</h1>
             <fieldset>
                 <legend>영화 추가</legend>
@@ -144,7 +145,7 @@ function App() {
             <div style={{display: 'flex', flexWrap: 'wrap',}}>
                 {cardList}
             </div>
-        </>
+        </div>
     )
 }
 

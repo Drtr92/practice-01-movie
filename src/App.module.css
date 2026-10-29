@@ -19,11 +19,12 @@ fieldset {
 
 .form {
     display: flex;
+    flex: 1;
     gap: 8px;
 }
 
 .select {
-    width: 90px;
+    width: 100px;
     padding: 8px 12px;
     box-sizing: border-box;
     border: 1px solid #ccc;
@@ -31,7 +32,8 @@ fieldset {
 }
 
 .input {
-    width: 300px;
+    flex: 1;
+    min-width: 0;
     padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -53,6 +55,7 @@ fieldset {
     padding: 6px 12px;
     border: none;
     color: white;
+    font-size: 12px;
     font-weight: bold;
     background-color: #8a8a8a;
     border-radius: 6px;
@@ -66,8 +69,7 @@ fieldset {
 .menu {
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
-    max-width: 800px;
+    width: 800px;
     color: #4b5563;
 }
 
@@ -94,6 +96,36 @@ fieldset {
     opacity: 1;
 }
 
+.genreInCard {
+    font-size: 14px;
+    font-weight: bold;
+    color: #4b5563;
+}
+
+.ratingBox {
+    display: flex;
+    margin: 6px 0;
+    font-size: 20px;
+}
+
+.goldStar {
+    color: gold;
+}
+
+.whiteStar {
+    color: #bfbfbf
+}
+
+.checkBoxTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #4b5563;
+}
+
 .movieField {
     display: flex;
     align-items: center;
@@ -114,11 +146,17 @@ fieldset {
     margin: 8px 8px;
 }
 
+.movies:hover {
+    margin: 5px 8px;
+    border: 3px solid #2563eb;
+}
+
 .movieTitle {
     display: flex;
     flex-direction: row;
     font-weight: bold;
     font-size: 18px;
+    margin: 16px 0;
 }
 
 .empty {
